@@ -322,7 +322,9 @@ public class ApexDoc {
                         strLine.contains(" get;") ||
                         strLine.contains(" set;") ||
                         strLine.contains(" get{") ||
-                        strLine.contains(" set{"))
+                        strLine.contains(" set{") ||
+                        strLine.contains(" get {") ||
+                        strLine.contains(" set {"))
                     continue;
 
                 // must be a property
