@@ -437,6 +437,22 @@ public class ApexDoc {
                 continue;
             }
 
+            idxStart = comment.toLowerCase().indexOf("@throws");
+            if (idxStart != -1) {
+                mModel.getExceptions().add(comment.substring(idxStart + 7).trim());
+                inDescription = false;
+                inExample = false;
+                continue;
+            }
+
+            idxStart = comment.toLowerCase().indexOf("@exception");
+            if (idxStart != -1) {
+                mModel.getExceptions().add(comment.substring(idxStart + 10).trim());
+                inDescription = false;
+                inExample = false;
+                continue;
+            }
+
             idxStart = comment.toLowerCase().indexOf("@description");
             if (idxStart != -1 || i == 1) {
                 if (idxStart != -1 && comment.length() >= idxStart + 12)
