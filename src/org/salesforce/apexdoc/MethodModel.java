@@ -6,6 +6,7 @@ public class MethodModel extends ApexModel {
 
     public MethodModel() {
         params = new ArrayList<String>();
+        exceptions = new ArrayList<String>();
     }
 
     public void setNameLine(String nameLine, int iLine) {
@@ -24,6 +25,14 @@ public class MethodModel extends ApexModel {
 
     public void setParams(ArrayList<String> params) {
         this.params = params;
+    }
+
+    public ArrayList<String> getExceptions() {
+        return exceptions;
+    }
+
+    public void setExceptions(ArrayList<String> exceptions) {
+        this.exceptions = exceptions;
     }
 
     public String getReturnType() {
