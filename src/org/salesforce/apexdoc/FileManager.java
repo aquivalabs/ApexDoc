@@ -268,6 +268,34 @@ public class FileManager {
                     contents += "<div class='methodReturns'>" + escapeHTML(method.getReturns()) + "</div>";
                 }
 
+                if (method.getExceptions().size() > 0) {
+                    contents += "<div class='methodSubTitle'>Exceptions</div>";
+                    for (String ex : method.getExceptions()) {
+                        ex = escapeHTML(ex);
+                        if (ex != null && ex.trim().length() > 0) {
+                            Pattern p = Pattern.compile("\\s");
+                            Matcher m = p.matcher(ex);
+
+                            String exClassName;
+                            String exDescription;
+                            if (m.find()) {
+                            	int ich = m.start();
+                                exClassName = ex.substring(0, ich);
+                                exDescription = ex.substring(ich + 1);
+                            } else {
+                                exClassName = ex;
+                                exDescription = null;
+                            }
+                            contents += "<div class='exClassName'>" + exClassName + "</div>";
+
+                            if (exDescription != null) {
+                                contents += "<div class='exDescription'>" + exDescription + "</div>";
+                            }
+                        }
+                    }
+                    // end Exceptions
+                }
+
                 if (method.getExample() != "") {
                     contents += "<div class='methodSubTitle'>Example</div>";
                     contents += "<code class='methodExample'>" + escapeHTML(method.getExample()) + "</code>";
